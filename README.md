@@ -40,3 +40,7 @@ As digital systems evolve, Dench Labs is exploring how CRUs may extend into new 
 ## Looking Ahead
 
 As digital systems evolve, we are exploring how CRUs may extend into new forms of autonomous and intelligent digital representation across healthcare, payments, financial systems, identity, commerce, governance, infrastructure, gaming, and beyond.
+
+
+## Architecture update
+The site now presents the five foundational CRU pillars and a dedicated Zero Trust Architecture (ZTA) vs. CRU comparison, including capability-oriented segmentation and the Alice/Bob/Charlie/Eve illustrative analogy.
