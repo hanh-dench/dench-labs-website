@@ -454,3 +454,32 @@ footer {
   .actor-grid { grid-template-columns: 1fr; }
   .flow { font-size: 11px; }
 }
+
+/* Capability in Context — aligned to the Capability Analogy section */
+.context-scenario {
+  margin-top: 42px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.context-scenario h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  letter-spacing: -.025em;
+}
+.context-scenario p {
+  margin: 0 0 22px;
+  font-size: 14px !important;
+}
+.context-scenario pre {
+  margin: 24px 0 0;
+  padding: 22px 24px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  font: 500 11px/1.65 DM Mono, monospace;
+  white-space: pre;
+}
+#capability-in-context .analogy-callout {
+  margin-top: 42px;
+}

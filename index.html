@@ -37,7 +37,9 @@
         <p>For decades, digital representations have depended on the systems around them—databases, platforms, repositories, networks, and authorities.</p>
         <p>CRU explores a different possibility:</p>
         <p class="cru-question"><strong>What if the representation itself could become the trusted primitive?</strong></p>
-        <p>A CRU is designed to create a portable, verifiable digital representation that can remain meaningful across systems and environments—without being defined solely by where it is stored, who hosts it, or which system recognizes it.</p>
+        <p>A CRU is designed to create a portable, verifiable digital representation that can remain meaningful across systems and environments—without 
+
+being defined solely by where it is stored, who hosts it, or which system recognizes it.</p>
         <p class="cru-pills"><strong>Portable. Verifiable. Independent by design.</strong></p>
         <p class="cru-closing"><em>A new primitive for a distributed world.</em></p>
         <p>Dench Labs is exploring what becomes possible when digital representations can stand on their own.</p>
@@ -135,6 +137,105 @@
       </div>
     </section>
 
+<section id="capability-in-context" class="section analogy">
+      <div class="section-label">05 / CAPABILITY IN CONTEXT</div>
+      <div>
+        <h2>Capability in Context</h2>
+        <p class="analogy-lead">
+          Capability is not a static property of identity. In a CRU architecture, the capability that may be exercised is evaluated against the current identity, device state, mission, requested action, and governing conditions.
+        </p>
+
+        <div class="context-scenario">
+          <h3>Elevated Access</h3>
+          <p>When Alice's mission changes, she can receive a narrowly scoped, temporary capability rather than a permanent elevated role. A bazooka capability can be authorized for a particular mission, under specified conditions, for a defined duration, and only while the relevant device and environmental state remains compliant.</p>
+          <pre>Normal:
+  Toy Gun       ACTIVE
+  Real Gun      ACTIVE
+  Bazooka       DENIED
+
+Elevated:
+  Toy Gun       ACTIVE
+  Real Gun      ACTIVE
+  Bazooka       CONDITIONALLY ACTIVE
+    Mission = X
+    Authorization = Y
+    Duration = Limited
+    Device State = Compliant</pre>
+          <p>When the governing condition ends, the capability expires or is revoked. Alice's identity did not permanently change; her governed capability set changed.</p>
+        </div>
+
+        <div class="context-scenario">
+          <h3>CIDD — Decision Over Capability in Context</h3>
+          <p>A CIDD decision evaluates the current context rather than treating authorization as a permanent identity attribute. The decision can incorporate identity, device, mission, current state, requested capability, and governance policy.</p>
+          <pre>Identity + Device + Mission + State
+        + Requested Capability + Governance
+                    ↓
+                   CIDD
+                    ↓
+           Capability Decision</pre>
+        </div>
+
+        <div class="context-scenario">
+          <h3>Eve Impersonates Alice</h3>
+          <p>Suppose Eve obtains Alice's credentials and presents herself as Alice. An identity claim alone should not automatically confer Alice's governed capabilities. The CRU model distinguishes an identity assertion from the capability composition authorized for the governed computational unit.</p>
+          <pre>Eve
+  ↓
+Claims Alice's identity
+  ↓
+Requests Alice's Real Gun capability
+  ↓
+CRU / Governance Evaluation
+  ↓
+Capability binding cannot be established
+  ↓
+DENIED</pre>
+        </div>
+
+        <div class="context-scenario">
+          <h3>Compromised Device State</h3>
+          <p>If Alice's authenticated device or surrounding context becomes compromised, the system can reevaluate her capabilities without redefining her identity. Different capabilities can move to different states.</p>
+          <pre>Alice-CRU
+  ↓
+Device or context becomes compromised
+  ↓
+State changes
+  ↓
+Capabilities reevaluated
+  ↓
+Real Gun → RESTRICTED
+Bazooka   → REVOKED
+Toy Gun   → MAY REMAIN ACTIVE</pre>
+        </div>
+
+        <div class="context-scenario">
+          <h3>Elevated Access While Eve Impersonates Alice</h3>
+          <p>Consider the harder case: Charlie authorizes Alice for temporary bazooka access, and Eve then attempts to impersonate Alice. Eve may possess Alice's username, password, or session artifacts, but those artifacts are not equivalent to Alice's governed capability composition.</p>
+          <pre>Alice
+  └── Alice-CRU
+       └── Temporary Bazooka Capability
+            └── Mission X
+                 └── Limited Duration
+
+Eve
+  └── Eve-CRU
+       └── No Bazooka Capability</pre>
+        </div>
+
+        <div class="context-scenario">
+          <h3>Fine-Grained Segmentation</h3>
+          <p>Traditional segmentation can isolate training, operational, and strategic networks. CRU-level segmentation can go further by treating individual capabilities as governed boundaries. Each capability can have its own identity, authorization, state, execution, and governance conditions.</p>
+          <pre>Alice-CRU
+  ├── Toy Gun Capability
+  ├── Real Gun Capability
+  └── Bazooka Capability</pre>
+        </div>
+
+        <div class="analogy-callout">
+          <strong>Core takeaway:</strong> Identity establishes who you claim to be. Capability establishes what you are authorized to do. Governance establishes when and under what conditions you may do it. CRU binds these concepts to the computational unit that actually performs the action.
+        </div>
+      </div>
+    </section>
+
     <section id="looking-ahead" class="section looking-ahead">
       <div class="section-label">05 / LOOKING AHEAD</div>
       <div>
@@ -198,7 +299,9 @@
       <h2>Build the foundation.</h2>
       <a class="contact-link" href="mailto:contact@dench-labs.com">contact@dench-labs.com <span>↗</span></a>
     </section>
-  </main>
+  
+
+</main>
 
   <footer>
     <span>© 2026 Dench Labs LLC</span>
