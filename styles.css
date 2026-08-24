@@ -677,3 +677,136 @@ footer {
     padding:16px;
   }
 }
+
+/* Final mobile fit fixes: sections 06 and 08 */
+@media screen and (max-width: 700px){
+
+  /* 06 — lifecycle: force each step into its own full-width row.
+     This prevents the arrows and labels from competing for horizontal space. */
+  #cru-lifecycle .cru-lifecycle-flow,
+  #cru-lifecycle .native-flow{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
+    gap:6px !important;
+    padding:12px !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
+
+  #cru-lifecycle .cru-lifecycle-flow span,
+  #cru-lifecycle .native-flow span{
+    display:block !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+    text-align:center !important;
+    white-space:normal !important;
+    padding:10px 8px !important;
+  }
+
+  #cru-lifecycle .cru-lifecycle-flow b,
+  #cru-lifecycle .native-flow b{
+    display:block !important;
+    text-align:center !important;
+    line-height:1 !important;
+    transform:none !important;
+  }
+
+  /* 08 — make sure the comparison cannot exceed the viewport. */
+  #cru-vs-existing{
+    overflow-x:hidden !important;
+  }
+
+  #cru-vs-existing .content,
+  #cru-vs-existing .section-main,
+  #cru-vs-existing > div{
+    min-width:0 !important;
+    max-width:100% !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+  }
+
+  #cru-vs-existing .native-compare,
+  #cru-vs-existing table,
+  #cru-vs-existing .s711-table,
+  #cru-vs-existing .cru-table-wrap{
+    max-width:100% !important;
+    min-width:0 !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+  }
+
+  /* In case Chrome is retaining table layout from an earlier rule,
+     explicitly turn it into stacked blocks. */
+  #cru-vs-existing .native-compare thead,
+  #cru-vs-existing table thead{
+    display:none !important;
+  }
+
+  #cru-vs-existing .native-compare tbody,
+  #cru-vs-existing .native-compare tr,
+  #cru-vs-existing .native-compare td,
+  #cru-vs-existing table tbody,
+  #cru-vs-existing table tr,
+  #cru-vs-existing table td{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
+  }
+
+  #cru-vs-existing .native-compare tr,
+  #cru-vs-existing table tr{
+    margin:0 0 10px !important;
+    border:1px solid var(--line) !important;
+    overflow:hidden !important;
+  }
+
+  #cru-vs-existing .native-compare td,
+  #cru-vs-existing table td{
+    border:0 !important;
+    padding:9px 11px !important;
+    overflow-wrap:anywhere !important;
+    word-break:normal !important;
+  }
+
+  #cru-vs-existing .native-compare td:first-child,
+  #cru-vs-existing table td:first-child{
+    font-family:DM Mono,monospace !important;
+    font-size:9px !important;
+    text-transform:uppercase !important;
+    letter-spacing:.05em !important;
+    padding-bottom:3px !important;
+  }
+
+  #cru-vs-existing .native-compare td:nth-child(2),
+  #cru-vs-existing table td:nth-child(2){
+    color:var(--muted) !important;
+    padding-top:3px !important;
+    padding-bottom:3px !important;
+  }
+
+  #cru-vs-existing .native-compare td:nth-child(3),
+  #cru-vs-existing table td:nth-child(3){
+    padding-top:3px !important;
+  }
+}
+
+@media screen and (max-width:390px){
+  #cru-lifecycle .cru-lifecycle-flow,
+  #cru-lifecycle .native-flow{
+    padding:9px !important;
+  }
+  #cru-lifecycle .cru-lifecycle-flow span,
+  #cru-lifecycle .native-flow span{
+    font-size:12px !important;
+  }
+  #cru-vs-existing .native-compare td,
+  #cru-vs-existing table td{
+    padding-left:9px !important;
+    padding-right:9px !important;
+  }
+}
