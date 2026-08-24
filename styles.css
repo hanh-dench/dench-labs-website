@@ -540,13 +540,140 @@ footer {
   text-transform:uppercase;
 }
 .native-roadmap p{color:var(--muted);font-size:13px}
-@media(max-width:800px){
- .native-list-grid{grid-template-columns:repeat(2,1fr)}
- .native-roadmap{grid-template-columns:repeat(2,1fr)}
- .native-persistence{grid-template-columns:1fr}
-}
-@media(max-width:600px){
- .native-list-grid,.native-roadmap{grid-template-columns:1fr}
+
  .native-sequence li{grid-template-columns:1fr;gap:5px}
  .native-compare{font-size:13px}
+}
+
+/* Mobile hardening for sections 07–11 */
+@media screen and (max-width: 700px){
+  /* Prevent horizontal overflow from any section 07–11 component. */
+  #cru-governance-boundary .content,
+  #cru-vs-existing .content,
+  #cru-portable-persistence .content,
+  #identity-to-capability .content,
+  #research-prototype-deployment .content{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    overflow:visible;
+    box-sizing:border-box;
+  }
+
+  /* 07 */
+  #cru-governance-boundary .native-list-grid{
+    grid-template-columns:1fr 1fr;
+    width:100%;
+    margin-top:24px;
+  }
+  #cru-governance-boundary .native-list-grid div{
+    min-width:0;
+    padding:15px 12px;
+    overflow-wrap:anywhere;
+  }
+
+  /* 08 — don't force a wide table on a phone. Turn rows into cards. */
+  #cru-vs-existing .native-compare{
+    display:block;
+    width:100%;
+    min-width:0;
+    border:0;
+    margin-top:24px;
+  }
+  #cru-vs-existing .native-compare thead{
+    display:none;
+  }
+  #cru-vs-existing .native-compare tbody,
+  #cru-vs-existing .native-compare tr,
+  #cru-vs-existing .native-compare td{
+    display:block;
+    width:100%;
+    box-sizing:border-box;
+  }
+  #cru-vs-existing .native-compare tr{
+    margin:0 0 12px;
+    border:1px solid var(--line);
+  }
+  #cru-vs-existing .native-compare td{
+    border:0;
+    padding:10px 12px;
+  }
+  #cru-vs-existing .native-compare td:first-child{
+    padding-bottom:4px;
+    font-family:DM Mono,monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+  #cru-vs-existing .native-compare td:nth-child(2){
+    padding-top:4px;
+    padding-bottom:4px;
+    color:var(--muted);
+  }
+  #cru-vs-existing .native-compare td:nth-child(3){
+    padding-top:4px;
+  }
+
+  /* 09 */
+  #cru-portable-persistence .native-persistence{
+    grid-template-columns:1fr;
+    gap:12px;
+    width:100%;
+    margin-top:24px;
+  }
+  #cru-portable-persistence .native-persistence>div{
+    min-width:0;
+    box-sizing:border-box;
+    overflow-wrap:anywhere;
+  }
+  #cru-portable-persistence .native-persistence>div:last-child{
+    text-align:center;
+  }
+
+  /* 10 */
+  #identity-to-capability .native-sequence{
+    width:100%;
+    margin-top:24px;
+  }
+  #identity-to-capability .native-sequence li{
+    grid-template-columns:1fr;
+    gap:5px;
+    padding:13px 0;
+  }
+  #identity-to-capability .native-sequence strong{
+    display:block;
+  }
+
+  /* 11 */
+  #research-prototype-deployment .native-roadmap{
+    grid-template-columns:1fr;
+    width:100%;
+    margin-top:24px;
+  }
+  #research-prototype-deployment .native-roadmap>div{
+    min-width:0;
+    padding:17px 14px;
+  }
+  #research-prototype-deployment .native-roadmap p{
+    margin-bottom:0;
+  }
+}
+
+/* Extra-small phones */
+@media screen and (max-width:390px){
+  #cru-governance-boundary .native-list-grid{
+    grid-template-columns:1fr;
+  }
+  #cru-governance-boundary .native-list-grid div{
+    padding:13px 12px;
+  }
+
+  #cru-vs-existing .native-compare td{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  #cru-portable-persistence .native-persistence>div{
+    padding:16px;
+  }
 }
