@@ -6,9 +6,6 @@
   <title>Dench Labs LLC | Digital Trust & Distributed Systems</title>
   <meta name="description" content="Dench Labs LLC develops foundational technologies for digital trust, governance, authorization, provenance, and secure distributed systems.">
   <link rel="stylesheet" href="styles.css">
-<style id="cru-mobile-responsive-fix">
-@media (max-width:768px){html,body{overflow-x:hidden;width:100%;}main,section,article{max-width:100%;box-sizing:border-box;}section{padding-left:20px!important;padding-right:20px!important;}pre,code{white-space:pre-wrap!important;overflow-wrap:anywhere!important;word-break:break-word!important;max-width:100%!important;}[class*="grid"],[class*="columns"],[class*="split"]{grid-template-columns:1fr!important;flex-direction:column!important;}#capability-scenarios,#capability-in-context{display:block!important;}h1{font-size:clamp(2rem,9vw,3rem)!important;line-height:1.05!important;}h2{font-size:clamp(1.65rem,7vw,2.35rem)!important;line-height:1.12!important;}h3{font-size:1.15rem!important;}p,li{font-size:.98rem!important;line-height:1.6!important;}table{display:block!important;width:100%!important;overflow-x:auto!important;}[class*="card"],[class*="callout"],blockquote{max-width:100%!important;box-sizing:border-box!important;}}
-</style>
 </head>
 <body>
   <header class="site-header">
@@ -41,6 +38,20 @@
         <p>CRU explores a different possibility:</p>
         <p class="cru-question"><strong>What if the representation itself could become the trusted primitive?</strong></p>
         <p>A CRU is designed to create a portable, verifiable digital representation that can remain meaningful across systems and environments—without 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 being defined solely by where it is stored, who hosts it, or which system recognizes it.</p>
         <p class="cru-pills"><strong>Portable. Verifiable. Independent by design.</strong></p>
@@ -140,18 +151,14 @@ being defined solely by where it is stored, who hosts it, or which system recogn
       </div>
     </section>
 
-<section id="capability-in-context" class="section analogy">
+<section id="capability-scenarios" class="section">
       <div class="section-label">05 / CAPABILITY IN CONTEXT</div>
       <div>
-        <h2>Capability in Context</h2>
-        <p class="analogy-lead">
-          Capability is not a static property of identity. In a CRU architecture, the capability that may be exercised is evaluated against the current identity, device state, mission, requested action, and governing conditions.
-        </p>
-
-        <div class="context-scenario">
-          <h3>Elevated Access</h3>
-          <p>When Alice's mission changes, she can receive a narrowly scoped, temporary capability rather than a permanent elevated role. A bazooka capability can be authorized for a particular mission, under specified conditions, for a defined duration, and only while the relevant device and environmental state remains compliant.</p>
-          <pre>Normal:
+      <h2>Capability in Context</h2>
+<p>Identity establishes who is represented; capability establishes what the represented unit may do; governance establishes when and under what conditions that capability may be exercised.</p>
+<h3>Normal Operating State</h3><p>Alice may have toy-gun and real-gun capabilities. Bob may have toy-gun and maintenance capabilities. Charlie may have administrative and real-gun capabilities, with bazooka capability conditional. Eve has no authorized capabilities. The point is not identity alone, but the capabilities bound to the governed computational unit.</p>
+<h3>Elevated Access</h3><p>When Alice's mission changes, she can receive a narrowly scoped, temporary capability rather than a permanent elevated role. A bazooka capability can be authorized only for a particular mission, under specified conditions, for a defined duration, and while the relevant device state remains compliant.</p>
+<pre>Normal:
   Toy Gun       ACTIVE
   Real Gun      ACTIVE
   Bazooka       DENIED
@@ -162,42 +169,29 @@ Elevated:
   Bazooka       CONDITIONALLY ACTIVE
     Mission = X
     Authorization = Y
-    Duration = Limited
-    Device State = Compliant</pre>
-          <p>When the governing condition ends, the capability expires or is revoked. Alice's identity did not permanently change; her governed capability set changed.</p>
-        </div>
-
-        <div class="context-scenario">
-          <h3>CIDD — Decision Over Capability in Context</h3>
-          <p>A CIDD decision evaluates the current context rather than treating authorization as a permanent identity attribute. The decision can incorporate identity, device, mission, current state, requested capability, and governance policy.</p>
-          <pre>Identity + Device + Mission + State
-        + Requested Capability + Governance
-                    ↓
-                   CIDD
-                    ↓
-           Capability Decision</pre>
-        </div>
-
-        <div class="context-scenario">
-          <h3>Eve Impersonates Alice</h3>
-          <p>Suppose Eve obtains Alice's credentials and presents herself as Alice. An identity claim alone should not automatically confer Alice's governed capabilities. The CRU model distinguishes an identity assertion from the capability composition authorized for the governed computational unit.</p>
-          <pre>Eve
+    Duration = limited
+    Device State = compliant</pre>
+<p>When the governing condition ends, the capability expires or is revoked. Alice's identity did not permanently change; her governed capability set changed.</p>
+<h3>CIDD: Decision Over Capability in Context</h3><p>A CIDD decision can evaluate identity, device, mission, current state, requested capability, and governance policy. The result is a decision about the capability that may be exercised under current conditions, rather than simply a trusted/untrusted result.</p>
+<pre>Identity + Device + Mission + State + Requested Capability + Governance
+                              ↓
+                             CIDD
+                              ↓
+                    Capability Decision</pre>
+<h3>Eve Impersonates Alice</h3><p>Suppose Eve obtains Alice's credentials and presents herself as Alice. An identity claim alone should not automatically confer Alice's governed capabilities. The CRU model distinguishes an identity assertion from the authorized capability composition associated with the governed computational unit.</p>
+<pre>Eve
   ↓
 Claims Alice's identity
   ↓
-Requests Alice's Real Gun capability
+Requests Alice's real-gun capability
   ↓
-CRU / Governance Evaluation
+Governance / CRU evaluation
   ↓
 Capability binding cannot be established
   ↓
 DENIED</pre>
-        </div>
-
-        <div class="context-scenario">
-          <h3>Compromised Device State</h3>
-          <p>If Alice's authenticated device or surrounding context becomes compromised, the system can reevaluate her capabilities without redefining her identity. Different capabilities can move to different states.</p>
-          <pre>Alice-CRU
+<h3>Compromised Device State</h3><p>Even when a request originates from Alice's authenticated device, a change in device or environmental state can trigger capability reevaluation. The system can restrict the capabilities that her CRU may currently exercise without redefining Alice's identity.</p>
+<pre>Alice-CRU
   ↓
 Device or context becomes compromised
   ↓
@@ -208,12 +202,8 @@ Capabilities reevaluated
 Real Gun → RESTRICTED
 Bazooka   → REVOKED
 Toy Gun   → MAY REMAIN ACTIVE</pre>
-        </div>
-
-        <div class="context-scenario">
-          <h3>Elevated Access While Eve Impersonates Alice</h3>
-          <p>Consider the harder case: Charlie authorizes Alice for temporary bazooka access, and Eve then attempts to impersonate Alice. Eve may possess Alice's username, password, or session artifacts, but those artifacts are not equivalent to Alice's governed capability composition.</p>
-          <pre>Alice
+<h3>Elevated Access While Eve Impersonates Alice</h3><p>Charlie authorizes Alice for temporary bazooka access, and Eve then attempts to impersonate Alice. Eve may possess Alice's username, password, or session artifacts, but those artifacts are not equivalent to the governed capability composition of Alice's CRU.</p>
+<pre>Alice
   └── Alice-CRU
        └── Temporary Bazooka Capability
             └── Mission X
@@ -222,25 +212,102 @@ Toy Gun   → MAY REMAIN ACTIVE</pre>
 Eve
   └── Eve-CRU
        └── No Bazooka Capability</pre>
-        </div>
-
-        <div class="context-scenario">
-          <h3>Fine-Grained Segmentation</h3>
-          <p>Traditional segmentation can isolate training, operational, and strategic networks. CRU-level segmentation can go further by treating individual capabilities as governed boundaries. Each capability can have its own identity, authorization, state, execution, and governance conditions.</p>
-          <pre>Alice-CRU
+<p>This demonstrates why authentication alone is insufficient: the system must establish authority to exercise the capability under the current governance state.</p>
+<h3>Fine-Grained Segmentation</h3><p>Traditional segmentation can isolate training, operational, and strategic networks. CRU-level segmentation can go further by treating individual capabilities as governed boundaries, each with identity, authorization, state, execution, and governance conditions.</p>
+<pre>Alice-CRU
   ├── Toy Gun Capability
   ├── Real Gun Capability
   └── Bazooka Capability</pre>
-        </div>
+<h3>Core Takeaway</h3><blockquote>Identity establishes who you claim to be. Capability establishes what you are authorized to do. Governance establishes when and under what conditions you may do it. CRU binds these concepts to the computational unit that actually performs the action.</blockquote>
+    </div>
+    </section>
 
-        <div class="analogy-callout">
-          <strong>Core takeaway:</strong> Identity establishes who you claim to be. Capability establishes what you are authorized to do. Governance establishes when and under what conditions you may do it. CRU binds these concepts to the computational unit that actually performs the action.
-        </div>
+<section id="cru-lifecycle" class="section">
+      <div class="section-label">06 / CRU LIFECYCLE</div>
+      <div>
+        <h2>A Living Computational Unit</h2>
+        <p>A CRU is not merely a static record. Its identity, capabilities, state, provenance, and governance can persist while its operational condition evolves.</p>
+<div class="cru-lifecycle-flow"><span>Create</span><b>→</b><span>Bind</span><b>→</b><span>Govern</span><b>→</b><span>Execute</span><b>→</b><span>Evolve</span><b>→</b><span>Revoke</span><b>→</b><span>Archive</span></div>
+      </div>
+    </section>
+
+<section id="cru-governance-boundary" class="section">
+      <div class="section-label">07 / GOVERNANCE BOUNDARY</div>
+      <div>
+        <h2>The CRU as a Governance Boundary</h2>
+        <p>The CRU can itself become the boundary at which identity, authorization, capability, state, execution, governance, and provenance are defined and enforced.</p>
+<div class="cru-boundary-grid"><span>Identity</span><span>Authorization</span><span>Capability</span><span>State</span><span>Execution</span><span>Governance</span><span>Provenance</span></div>
+      </div>
+    </section>
+
+<section id="cru-vs-existing" class="section">
+      <div class="section-label">08 / EXISTING APPROACHES</div>
+      <div>
+        <h2>CRU and Existing Security Models</h2>
+        <p>CRU does not eliminate established security mechanisms. It provides a common computational unit in which identity, capability, state, execution, provenance, and governance can be connected.</p>
+<div class="cru-table-wrap"><table><thead><tr><th>Model</th><th>Primary Unit</th></tr></thead><tbody>
+<tr><td>Traditional application</td><td>Application</td></tr>
+<tr><td>IAM</td><td>Identity</td></tr>
+<tr><td>RBAC</td><td>Role</td></tr>
+<tr><td>ABAC</td><td>Attribute / context</td></tr>
+<tr><td>Zero Trust</td><td>Access decision</td></tr>
+<tr><td>Micro-segmentation</td><td>Network / workload boundary</td></tr>
+<tr><td>Container</td><td>Runtime packaging</td></tr>
+<tr><td><strong>CRU</strong></td><td><strong>Canonical governed computational unit</strong></td></tr>
+</tbody></table></div>
+      </div>
+    </section>
+
+<section id="cru-portable-persistence" class="section">
+      <div class="section-label">09 / PORTABLE PERSISTENCE</div>
+      <div>
+        <h2>Identity Without Repository Dependence</h2>
+        <p>Portable persistence separates the canonical representation from the repository that happens to hold it.</p>
+<div class="cru-portability"><div><strong>CRU</strong><small>Canonical ID<br>Integrity<br>Provenance<br>Meaning</small></div><div class="cru-targets"><span>Cloud</span><span>Edge</span><span>Device</span><span>Gateway</span></div></div>
+<p><strong>The CRU can exist anywhere while preserving identity, integrity, and meaning.</strong></p>
+      </div>
+    </section>
+
+<section id="identity-to-capability" class="section">
+      <div class="section-label">10 / IDENTITY TO CAPABILITY</div>
+      <div>
+        <h2>From Identity to Capability</h2>
+        <div class="cru-identity-steps">
+<div><strong>Identity</strong><span>Alice is Alice.</span></div>
+<div><strong>Authorization</strong><span>Alice is authorized.</span></div>
+<div><strong>Capability</strong><span>Alice can perform X.</span></div>
+<div><strong>Context</strong><span>Alice can perform X under condition Y.</span></div>
+<div><strong>Governance</strong><span>Policy Z permits X under Y.</span></div>
+<div><strong>Execution</strong><span>The authorized capability is enforced where the action occurs.</span></div>
+</div>
+      </div>
+    </section>
+
+<section id="research-prototype-deployment" class="section">
+      <div class="section-label">11 / RESEARCH → PROTOTYPE → VALIDATION → TRANSITION</div>
+      <div>
+        <h2>From Research to Validation</h2>
+        <div class="cru-roadmap">
+<article><span>01</span><h3>Research</h3><p>CRU formalization<br>Governance model<br>Capability semantics</p></article>
+<article><span>02</span><h3>Prototype</h3><p>CRU VM<br>Governance VM<br>Gateway<br>Edge CRU</p></article>
+<article><span>03</span><h3>Validation</h3><p>Simulation<br>Adversarial scenarios<br>Interoperability testing</p></article>
+<article><span>04</span><h3>Transition</h3><p>Distributed systems<br>AI systems<br>Mission environments</p></article>
+</div>
+      </div>
+    </section>
+
+<section id="positioning" class="section">
+      <div class="section-label">12 / ARCHITECTURAL DISCIPLINE</div>
+      <div>
+        <h2>What CRU Does — and Does Not Claim</h2>
+        <p>CRU is an architectural primitive, not a claim that existing security approaches are obsolete. Zero Trust, IAM, RBAC, ABAC, micro-segmentation, cryptography, and other mechanisms can remain part of a CRU-based system.</p>
+<p>CRU does not eliminate segmentation or guarantee security. It provides a more explicit computational boundary for representing, governing, and enforcing capabilities and state.</p>
+<p><strong>CRU is an architectural primitive for canonical, portable, cryptographically verifiable, capability-oriented governed computation.</strong></p>
       </div>
     </section>
 
     <section id="looking-ahead" class="section looking-ahead">
-      <div class="section-label">05 / LOOKING AHEAD</div>
+      <div class="section-label">13 / LOOKING AHEAD</div>
       <div>
         <h2>Where could CRUs go next?</h2>
         <p class="future-intro">
@@ -261,7 +328,7 @@ Eve
     </section>
 
     <section id="capabilities" class="section">
-      <div class="section-label">06 / OPERATIONAL DIMENSIONS</div>
+      <div class="section-label">14 / OPERATIONAL DIMENSIONS</div>
       <div class="cards">
         <article><span>01</span><div class="capability-heading"><div class="capability-icon" aria-hidden="true">◎</div><h3>Identity</h3></div><p>Maintain an authoritative representation of the actor, device, service, or computational object.</p></article>
         <article><span>02</span><div class="capability-heading"><div class="capability-icon" aria-hidden="true">◇</div><h3>Authorization</h3></div><p>Determine which capabilities are available under the current governance context.</p></article>
@@ -272,7 +339,7 @@ Eve
     </section>
 
     <section id="about" class="section about">
-      <div class="section-label">07 / ABOUT</div>
+      <div class="section-label">15 / ABOUT</div>
       <div>
         <h2>Building infrastructure beneath the application layer.</h2>
         <p>
@@ -288,7 +355,7 @@ Eve
 
     <section class="research">
       <div>
-        <div class="section-label">08 / RESEARCH &amp; IP</div>
+        <div class="section-label">16 / RESEARCH &amp; IP</div>
         <h2>Research first. Infrastructure that endures.</h2>
       </div>
       <p>
@@ -298,7 +365,7 @@ Eve
     </section>
 
     <section id="contact" class="contact">
-      <div class="section-label">09 / CONTACT</div>
+      <div class="section-label">17 / CONTACT</div>
       <h2>Build the foundation.</h2>
       <a class="contact-link" href="mailto:contact@dench-labs.com">contact@dench-labs.com <span>↗</span></a>
     </section>
