@@ -43,4 +43,4 @@ As digital systems evolve, we are exploring how CRUs may extend into new forms o
 
 
 ## Architecture update
-The site now presents the five foundational CRU pillars and a dedicated Zero Trust Architecture (ZTA) vs. CRU comparison, including capability-oriented segmentation and the Alice/Bob/Charlie/Eve illustrative analogy.
+The site presents a dedicated ZTA + CRU comparison that distinguishes continuous access evaluation from governed CRU state and capability derivation. It includes an Alice promotion example showing how a Person CRU state transition can change capabilities while existing Zero Trust infrastructure continues to evaluate and enforce access.
