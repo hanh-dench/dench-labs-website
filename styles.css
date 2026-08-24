@@ -455,31 +455,98 @@ footer {
   .flow { font-size: 11px; }
 }
 
-/* CRU continuation components — no section-level positioning. */
-.cru-lifecycle-flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:32px;padding:20px;border:1px solid var(--line)}
-.cru-lifecycle-flow span{padding:9px 13px;border:1px solid var(--line);background:var(--panel);font:500 10px/1.2 DM Mono,monospace;text-transform:uppercase;white-space:nowrap}
-.cru-lifecycle-flow b{color:var(--muted)}
-.cru-boundary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:32px}
-.cru-boundary-grid span{min-width:0;padding:20px;background:var(--bg);font:500 11px/1.3 DM Mono,monospace;text-transform:uppercase}
-.cru-table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:32px}
-.cru-table-wrap table{width:100%;min-width:600px;border-collapse:collapse}
-.cru-table-wrap th,.cru-table-wrap td{padding:13px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
-.cru-table-wrap th{font:500 10px/1.3 DM Mono,monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.cru-portability{display:grid;grid-template-columns:minmax(150px,210px) minmax(0,1fr);gap:40px;align-items:center;margin-top:32px}
-.cru-portability>div:first-child{padding:24px;border:2px solid var(--ink);text-align:center}
-.cru-portability small{display:block;margin-top:8px;line-height:1.7;color:var(--muted)}
-.cru-targets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-.cru-targets span{padding:16px 10px;border:1px solid var(--line);text-align:center;font:500 10px/1.2 DM Mono,monospace;text-transform:uppercase}
-.cru-identity-steps{margin-top:32px;padding:14px 20px;border:1px solid var(--line)}
-.cru-identity-steps>div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;padding:14px 0;border-bottom:1px solid var(--line)}
-.cru-identity-steps>div:last-child{border-bottom:0}
-.cru-identity-steps strong{font:500 10px/1.3 DM Mono,monospace;text-transform:uppercase;letter-spacing:.08em}
-.cru-identity-steps span{color:var(--muted)}
-.cru-roadmap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:32px}
-.cru-roadmap article{min-width:0;padding:24px;background:var(--bg)}
-.cru-roadmap article>span{font:500 10px/1.3 DM Mono,monospace;letter-spacing:.1em;color:var(--muted)}
-.cru-roadmap h3{margin:22px 0 10px}
-.cru-roadmap p{margin:0}
-@media(max-width:850px){.cru-boundary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cru-roadmap{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){.cru-lifecycle-flow{display:grid;grid-template-columns:1fr;gap:7px}.cru-lifecycle-flow span{text-align:center}.cru-lifecycle-flow b{text-align:center}.cru-boundary-grid{grid-template-columns:1fr 1fr}.cru-portability{grid-template-columns:1fr;gap:20px}.cru-targets{grid-template-columns:1fr 1fr}.cru-identity-steps>div{grid-template-columns:1fr;gap:5px}.cru-roadmap{grid-template-columns:1fr}}
-@media(max-width:390px){.cru-boundary-grid,.cru-targets{grid-template-columns:1fr}}
+/* Sections 07–11: one shared content system, no section-level grids. */
+.section-main{min-width:0;width:100%;box-sizing:border-box}
+.section-main h2{max-width:900px}
+
+.s711-boundary{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);
+  margin-top:28px;
+}
+.s711-boundary div{
+  min-width:0;padding:20px;background:var(--bg);
+  font:500 10px/1.35 DM Mono,monospace;text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.s711-table{
+  width:100%;overflow-x:auto;margin-top:28px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.s711-table table{width:100%;min-width:700px;border-collapse:collapse}
+.s711-table th,.s711-table td{
+  padding:14px 16px;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--line);
+}
+.s711-table tr:last-child td{border-bottom:0}
+.s711-table th{
+  font:500 9px/1.3 DM Mono,monospace;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--muted);
+}
+
+.s711-portability{
+  display:grid;grid-template-columns:190px minmax(0,1fr);
+  gap:32px;align-items:center;margin-top:28px;
+}
+.s711-cru{
+  padding:24px;border:1px solid var(--ink);text-align:center;
+}
+.s711-cru strong{font-size:20px}
+.s711-cru small{display:block;margin-top:10px;line-height:1.7;color:var(--muted)}
+.s711-targets{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;
+}
+.s711-targets span{
+  padding:16px 8px;border:1px solid var(--line);text-align:center;
+  font:500 9px/1.3 DM Mono,monospace;text-transform:uppercase;
+}
+
+.s711-steps{
+  margin-top:28px;border-top:1px solid var(--line);
+}
+.s711-steps div{
+  display:grid;grid-template-columns:42px 150px minmax(0,1fr);
+  gap:18px;align-items:baseline;padding:16px 0;
+  border-bottom:1px solid var(--line);
+}
+.s711-steps b{
+  font:500 9px/1.3 DM Mono,monospace;color:var(--muted);
+}
+.s711-steps strong{
+  font:500 10px/1.3 DM Mono,monospace;text-transform:uppercase;
+  letter-spacing:.07em;
+}
+.s711-steps span{color:var(--muted)}
+
+.s711-roadmap{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);
+  margin-top:28px;
+}
+.s711-roadmap>div{
+  min-width:0;padding:22px;background:var(--bg);
+}
+.s711-roadmap b{
+  display:block;font:500 9px/1.3 DM Mono,monospace;color:var(--muted);
+}
+.s711-roadmap strong{
+  display:block;margin-top:20px;font-size:18px;
+}
+.s711-roadmap p{margin:10px 0 0;color:var(--muted);font-size:13px}
+
+@media(max-width:850px){
+ .s711-boundary{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .s711-roadmap{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+ .s711-boundary{grid-template-columns:1fr 1fr}
+ .s711-portability{grid-template-columns:1fr;gap:20px}
+ .s711-targets{grid-template-columns:1fr 1fr}
+ .s711-steps div{grid-template-columns:32px 1fr;gap:12px}
+ .s711-steps span{grid-column:2}
+ .s711-roadmap{grid-template-columns:1fr}
+}
+@media(max-width:390px){
+ .s711-boundary,.s711-targets{grid-template-columns:1fr}
+}
