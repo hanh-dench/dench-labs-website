@@ -810,3 +810,73 @@ footer {
     padding-right:9px !important;
   }
 }
+
+/* Final mobile fit fix: section 05 Capability in Context */
+@media screen and (max-width:700px){
+  #capability-scenarios{
+    overflow-x:hidden !important;
+  }
+  #capability-scenarios > div,
+  #capability-scenarios .content,
+  #capability-scenarios .section-main{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+  }
+
+  /* Prevent any scenario/analogy grid from forcing a desktop width. */
+  #capability-scenarios .scenario-grid,
+  #capability-scenarios .analogy-grid,
+  #capability-scenarios .capability-grid,
+  #capability-scenarios .comparison-grid{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    gap:10px !important;
+  }
+
+  #capability-scenarios .scenario,
+  #capability-scenarios .analogy-card,
+  #capability-scenarios .capability-card,
+  #capability-scenarios article{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  #capability-scenarios img,
+  #capability-scenarios svg{
+    max-width:100% !important;
+    height:auto !important;
+  }
+
+  #capability-scenarios table{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    overflow-x:auto !important;
+    box-sizing:border-box !important;
+  }
+
+  #capability-scenarios p,
+  #capability-scenarios li,
+  #capability-scenarios span,
+  #capability-scenarios div{
+    overflow-wrap:anywhere;
+  }
+}
+
+@media screen and (max-width:390px){
+  #capability-scenarios .scenario-grid,
+  #capability-scenarios .analogy-grid,
+  #capability-scenarios .capability-grid,
+  #capability-scenarios .comparison-grid{
+    gap:8px !important;
+  }
+}
