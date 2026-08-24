@@ -230,67 +230,77 @@ Eve
 <div class="cru-lifecycle-flow"><span>Create</span><b>→</b><span>Bind</span><b>→</b><span>Govern</span><b>→</b><span>Execute</span><b>→</b><span>Evolve</span><b>→</b><span>Revoke</span><b>→</b><span>Archive</span></div>
       </div>
     </section>
+
+
 <section id="cru-governance-boundary" class="section">
-      <div class="section-label">07 / GOVERNANCE BOUNDARY</div>
-      <div class="section-main">
-        <h2>The CRU as a Governance Boundary</h2>
-        <p>The CRU can itself become the boundary at which identity, authorization, capability, state, execution, governance, and provenance are defined and enforced.</p>
- <div class="s711-boundary"><div>Identity</div><div>Authorization</div><div>Capability</div><div>State</div><div>Execution</div><div>Governance</div><div>Provenance</div></div>
-      </div>
-    </section>
+  <div class="section-label">07 / GOVERNANCE BOUNDARY</div>
+  <div class="content">
+    <h2>The CRU as a Governance Boundary</h2>
+    <p>The CRU can itself become the boundary at which identity, authorization, capability, state, execution, governance, and provenance are defined and enforced.</p>
+<div class="native-list-grid">
+  <div>Identity</div><div>Authorization</div><div>Capability</div><div>State</div>
+  <div>Execution</div><div>Governance</div><div>Provenance</div>
+</div>
+  </div>
+</section>
 
 <section id="cru-vs-existing" class="section">
-      <div class="section-label">08 / EXISTING APPROACHES</div>
-      <div class="section-main">
-        <h2>CRU and Existing Security Models</h2>
-        <p>CRU does not replace established security mechanisms. It provides a common computational unit in which identity, capability, state, execution, provenance, and governance can be connected.</p>
- <div class="s711-table"><table><thead><tr><th>Approach</th><th>Primary Unit</th><th>What It Controls</th></tr></thead><tbody>
- <tr><td>IAM</td><td>Identity</td><td>Who the subject is</td></tr>
- <tr><td>RBAC / ABAC</td><td>Role / attributes</td><td>What access may be granted</td></tr>
- <tr><td>Zero Trust</td><td>Access decision</td><td>Whether access is trusted in context</td></tr>
- <tr><td>Micro-segmentation</td><td>Network / workload</td><td>Where communication is permitted</td></tr>
- <tr><td>CRU</td><td>Canonical computational unit</td><td>Identity, capability, state, execution, governance, provenance</td></tr>
- </tbody></table></div>
-      </div>
-    </section>
+  <div class="section-label">08 / EXISTING APPROACHES</div>
+  <div class="content">
+    <h2>CRU and Existing Security Models</h2>
+    <p>CRU does not replace established security mechanisms. It provides a common computational unit in which identity, capability, state, execution, provenance, and governance can be connected.</p>
+<table class="native-compare">
+<thead><tr><th>Approach</th><th>Primary Unit</th><th>Primary Function</th></tr></thead>
+<tbody>
+<tr><td>IAM</td><td>Identity</td><td>Establishes who the subject is</td></tr>
+<tr><td>RBAC / ABAC</td><td>Role / attributes</td><td>Determines permitted access</td></tr>
+<tr><td>Zero Trust</td><td>Access decision</td><td>Evaluates access in context</td></tr>
+<tr><td>Micro-segmentation</td><td>Network / workload</td><td>Constrains communication paths</td></tr>
+<tr><td>CRU</td><td>Canonical computational unit</td><td>Connects identity, capability, state, execution, governance, provenance</td></tr>
+</tbody></table>
+  </div>
+</section>
 
 <section id="cru-portable-persistence" class="section">
-      <div class="section-label">09 / PORTABLE PERSISTENCE</div>
-      <div class="section-main">
-        <h2>Identity Without Repository Dependence</h2>
-        <p>Portable persistence separates the canonical representation from the repository that happens to hold it.</p>
- <div class="s711-portability"><div class="s711-cru"><strong>CRU</strong><small>Canonical identity<br>Integrity<br>Provenance<br>Meaning</small></div><div class="s711-targets"><span>Cloud</span><span>Edge</span><span>Device</span><span>Gateway</span></div></div>
- <p><strong>The CRU can move across infrastructures without surrendering its canonical identity.</strong></p>
-      </div>
-    </section>
+  <div class="section-label">09 / PORTABLE PERSISTENCE</div>
+  <div class="content">
+    <h2>Identity Without Repository Dependence</h2>
+    <p>Portable persistence separates the canonical representation from the repository that happens to hold it.</p>
+<div class="native-persistence">
+  <div><strong>CRU</strong><p>Canonical identity<br>Integrity<br>Provenance<br>Meaning</p></div>
+  <div><p>Cloud &nbsp; · &nbsp; Edge &nbsp; · &nbsp; Device &nbsp; · &nbsp; Gateway</p></div>
+</div>
+<p><strong>The CRU can move across infrastructures without surrendering its canonical identity.</strong></p>
+  </div>
+</section>
 
 <section id="identity-to-capability" class="section">
-      <div class="section-label">10 / IDENTITY TO CAPABILITY</div>
-      <div class="section-main">
-        <h2>From Identity to Capability</h2>
-        <div class="s711-steps">
- <div><b>01</b><strong>Identity</strong><span>Alice is Alice.</span></div>
- <div><b>02</b><strong>Authorization</strong><span>Alice is authorized.</span></div>
- <div><b>03</b><strong>Capability</strong><span>Alice can perform X.</span></div>
- <div><b>04</b><strong>Context</strong><span>Alice can perform X under condition Y.</span></div>
- <div><b>05</b><strong>Governance</strong><span>Policy Z permits X under Y.</span></div>
- <div><b>06</b><strong>Execution</strong><span>The capability is enforced where the action occurs.</span></div>
- </div>
-      </div>
-    </section>
+  <div class="section-label">10 / IDENTITY TO CAPABILITY</div>
+  <div class="content">
+    <h2>From Identity to Capability</h2>
+    <ol class="native-sequence">
+<li><strong>Identity</strong><span>Alice is Alice.</span></li>
+<li><strong>Authorization</strong><span>Alice is authorized.</span></li>
+<li><strong>Capability</strong><span>Alice can perform X.</span></li>
+<li><strong>Context</strong><span>Alice can perform X under condition Y.</span></li>
+<li><strong>Governance</strong><span>Policy Z permits X under Y.</span></li>
+<li><strong>Execution</strong><span>The capability is enforced where the action occurs.</span></li>
+</ol>
+  </div>
+</section>
 
 <section id="research-prototype-deployment" class="section">
-      <div class="section-label">11 / RESEARCH → PROTOTYPE → VALIDATION → TRANSITION</div>
-      <div class="section-main">
-        <h2>From Research to Validation</h2>
-        <div class="s711-roadmap">
- <div><b>01</b><strong>Research</strong><p>CRU formalization<br>Governance model<br>Capability semantics</p></div>
- <div><b>02</b><strong>Prototype</strong><p>CRU VM<br>Governance VM<br>Gateway<br>Edge CRU</p></div>
- <div><b>03</b><strong>Validation</strong><p>Simulation<br>Adversarial scenarios<br>Interoperability testing</p></div>
- <div><b>04</b><strong>Transition</strong><p>Distributed systems<br>AI systems<br>Mission environments</p></div>
- </div>
-      </div>
-    </section>
+  <div class="section-label">11 / RESEARCH → PROTOTYPE → VALIDATION → TRANSITION</div>
+  <div class="content">
+    <h2>From Research to Validation</h2>
+    <div class="native-roadmap">
+<div><strong>01 · Research</strong><p>CRU formalization<br>Governance model<br>Capability semantics</p></div>
+<div><strong>02 · Prototype</strong><p>CRU VM<br>Governance VM<br>Gateway<br>Edge CRU</p></div>
+<div><strong>03 · Validation</strong><p>Simulation<br>Adversarial scenarios<br>Interoperability testing</p></div>
+<div><strong>04 · Transition</strong><p>Distributed systems<br>AI systems<br>Mission environments</p></div>
+</div>
+  </div>
+</section>
 
 <section id="positioning" class="section">
       <div class="section-label">12 / ARCHITECTURAL DISCIPLINE</div>
