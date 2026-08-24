@@ -811,72 +811,119 @@ footer {
   }
 }
 
-/* Final mobile fit fix: section 05 Capability in Context */
+
+/* Section 05 — mobile containment and stacking */
 @media screen and (max-width:700px){
   #capability-scenarios{
-    overflow-x:hidden !important;
-  }
-  #capability-scenarios > div,
-  #capability-scenarios .content,
-  #capability-scenarios .section-main{
+    display:block !important;
     width:100% !important;
     max-width:100% !important;
     min-width:0 !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
+    overflow:hidden !important;
     box-sizing:border-box !important;
   }
 
-  /* Prevent any scenario/analogy grid from forcing a desktop width. */
-  #capability-scenarios .scenario-grid,
-  #capability-scenarios .analogy-grid,
-  #capability-scenarios .capability-grid,
-  #capability-scenarios .comparison-grid{
-    display:grid !important;
-    grid-template-columns:1fr !important;
-    width:100% !important;
-    max-width:100% !important;
+  #capability-scenarios > *{
     min-width:0 !important;
-    gap:10px !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
   }
 
-  #capability-scenarios .scenario,
-  #capability-scenarios .analogy-card,
-  #capability-scenarios .capability-card,
-  #capability-scenarios article{
+  #capability-scenarios .section-label{
     width:100% !important;
-    min-width:0 !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
+    white-space:normal !important;
+  }
+
+  #capability-scenarios h2{
+    max-width:100% !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  #capability-scenarios p{
     max-width:100% !important;
     box-sizing:border-box !important;
     overflow-wrap:anywhere !important;
   }
 
-  #capability-scenarios img,
-  #capability-scenarios svg{
-    max-width:100% !important;
-    height:auto !important;
-  }
-
-  #capability-scenarios table{
+  /* Any horizontal flex/grid inside section 5 becomes a vertical stack. */
+  #capability-scenarios .cards,
+  #capability-scenarios .grid,
+  #capability-scenarios .scenarios,
+  #capability-scenarios .scenario-cards,
+  #capability-scenarios .comparison,
+  #capability-scenarios .columns,
+  #capability-scenarios [class*="grid"],
+  #capability-scenarios [class*="cards"]{
     display:block !important;
     width:100% !important;
     max-width:100% !important;
     min-width:0 !important;
-    overflow-x:auto !important;
     box-sizing:border-box !important;
   }
 
-  #capability-scenarios p,
-  #capability-scenarios li,
-  #capability-scenarios span,
-  #capability-scenarios div{
-    overflow-wrap:anywhere;
+  #capability-scenarios .cards > *,
+  #capability-scenarios .grid > *,
+  #capability-scenarios .scenarios > *,
+  #capability-scenarios .scenario-cards > *,
+  #capability-scenarios .comparison > *,
+  #capability-scenarios .columns > *,
+  #capability-scenarios [class*="grid"] > *,
+  #capability-scenarios [class*="cards"] > *{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    box-sizing:border-box !important;
+  }
+
+  #capability-scenarios table{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    table-layout:fixed !important;
+    box-sizing:border-box !important;
+  }
+
+  #capability-scenarios th,
+  #capability-scenarios td{
+    max-width:100% !important;
+    overflow-wrap:anywhere !important;
+    word-break:normal !important;
+  }
+
+  #capability-scenarios pre,
+  #capability-scenarios code{
+    max-width:100% !important;
+    white-space:pre-wrap !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  #capability-scenarios img,
+  #capability-scenarios svg,
+  #capability-scenarios video{
+    display:block !important;
+    width:auto !important;
+    max-width:100% !important;
+    height:auto !important;
+    box-sizing:border-box !important;
   }
 }
 
 @media screen and (max-width:390px){
-  #capability-scenarios .scenario-grid,
-  #capability-scenarios .analogy-grid,
-  #capability-scenarios .capability-grid,
-  #capability-scenarios .comparison-grid{
-    gap:8px !important;
+  #capability-scenarios{
+    font-size:14px;
+  }
+  #capability-scenarios .section-label{
+    font-size:9px !important;
   }
 }
