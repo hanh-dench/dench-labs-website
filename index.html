@@ -16,8 +16,6 @@
 <a href="#pillars">Pillars</a>
 <a href="#zero-trust">ZTA + CRU</a>
 <a href="#capability-scenarios">Capability in Context</a><a href="#alice-promotion">State Transition</a><a href="#risk-events">Risk Events</a>
-
-
 <a href="#contact">Contact</a>
 </nav>
 </header>
@@ -89,8 +87,61 @@ being defined solely by where it is stored, who hosts it, or which system recogn
 </div>
 </div>
 </section>
-<section class="section comparison" id="zero-trust">
-<div class="section-label">03 / ZTA + CRU</div>
+
+<section class="section" id="cru-governance-boundary">
+<div class="section-label">03 / GOVERNANCE BOUNDARY</div>
+<div class="content">
+<h2>The CRU as a Governance Boundary</h2>
+<p>The CRU can itself become the boundary at which identity, authorization, capability, state, execution, governance, and provenance are defined and enforced.</p>
+<div class="native-list-grid">
+<div>Identity</div><div>Authorization</div><div>Capability</div><div>State</div>
+<div>Execution</div><div>Governance</div><div>Provenance</div>
+</div>
+</div>
+</section>
+<section class="section" id="cru-vs-existing">
+<div class="section-label">04 / EXISTING APPROACHES</div>
+<div class="content">
+<h2>CRU and Existing Security Models</h2>
+<p>CRU does not replace established security mechanisms. It provides a common computational unit in which identity, capability, state, execution, provenance, and governance can be connected.</p>
+<table class="native-compare">
+<thead><tr><th>Approach</th><th>Primary Unit</th><th>Primary Function</th></tr></thead>
+<tbody>
+<tr><td>IAM</td><td>Identity</td><td>Establishes who the subject is</td></tr>
+<tr><td>RBAC / ABAC</td><td>Role / attributes</td><td>Determines permitted access</td></tr>
+<tr><td>Zero Trust</td><td>Access decision</td><td>Evaluates access in context</td></tr>
+<tr><td>Micro-segmentation</td><td>Network / workload</td><td>Constrains communication paths</td></tr>
+<tr><td>CRU</td><td>Canonical computational unit</td><td>Connects identity, capability, state, execution, governance, provenance</td></tr>
+</tbody></table>
+</div>
+</section>
+<section class="section" id="cru-portable-persistence">
+<div class="section-label">05 / PORTABLE PERSISTENCE</div>
+<div class="content">
+<h2>Identity Without Repository Dependence</h2>
+<p>Portable persistence separates the canonical representation from the repository that happens to hold it.</p>
+<div class="native-persistence">
+<div><strong>CRU</strong><p>Canonical identity<br/>Integrity<br/>Provenance<br/>Meaning</p></div>
+<div><p>Cloud   ·   Edge   ·   Device   ·   Gateway</p></div>
+</div>
+<p><strong>The CRU can move across infrastructures without surrendering its canonical identity.</strong></p>
+</div>
+</section>
+<section class="section" id="identity-to-capability">
+<div class="section-label">06 / IDENTITY TO CAPABILITY</div>
+<div class="content">
+<h2>From Identity to Capability</h2>
+<ol class="native-sequence">
+<li><strong>Identity</strong><span>Alice is Alice.</span></li>
+<li><strong>Authorization</strong><span>Alice is authorized.</span></li>
+<li><strong>Capability</strong><span>Alice can perform X.</span></li>
+<li><strong>Context</strong><span>Alice can perform X under condition Y.</span></li>
+<li><strong>Governance</strong><span>Policy Z permits X under Y.</span></li>
+<li><strong>Execution</strong><span>The capability is enforced where the action occurs.</span></li>
+</ol>
+</div>
+</section><section class="section comparison" id="zero-trust">
+<div class="section-label">07 / ZTA + CRU</div>
 <div>
 <h2>Complementary architectures. Different responsibilities.</h2>
 <p class="comparison-lead">
@@ -126,7 +177,7 @@ being defined solely by where it is stored, who hosts it, or which system recogn
 </div>
 </section>
 <section class="section analogy" id="analogy">
-<div class="section-label">04 / CAPABILITY ANALOGY</div>
+<div class="section-label">08 / CAPABILITY ANALOGY</div>
 <div>
 <h2>From “can Alice access it?” to “what can Alice do?”</h2>
 <p class="analogy-lead">
@@ -151,7 +202,7 @@ being defined solely by where it is stored, who hosts it, or which system recogn
 </div>
 </section>
 <section class="section" id="capability-scenarios">
-<div class="section-label">05 / CAPABILITY IN CONTEXT</div>
+<div class="section-label">09 / CAPABILITY IN CONTEXT</div>
 <div>
 <h2>Capability evolves with governed state.</h2>
 <p>Identity establishes who is represented; capability establishes what the represented unit may do; governance establishes how state changes and when capabilities may be exercised.</p>
@@ -209,9 +260,9 @@ Execution</pre>
           </div>
 </div>
 </div>
-</section><section class="section scenario-detail" id="capability-scenario-01"><div><div class="section-label">05.01 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 01 / ROLE CHANGE</span><h2>Promotion changes governed capability</h2><p class="scenario-detail-copy">Alice moves from Engineer to Senior Engineer. The event changes the Person CRU's governed state. Capabilities such as approval, supervision, or access to higher-sensitivity resources can be derived from the new state instead of being manually added as unrelated permissions in each system.</p><div class="scenario-chain scenario-detail-chain">Role change → CRU state transition → capability derivation → current-request evaluation</div></div></div></section><section class="section scenario-detail" id="capability-scenario-02"><div><div class="section-label">05.02 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 02 / TEMPORARY MISSION</span><h2>A capability can be leased</h2><p class="scenario-detail-copy">Alice receives a mission-specific capability valid only for the assignment, resource scope, geography, and time window defined by governance. Her underlying identity and permanent role remain unchanged. The capability expires automatically when its lease conditions are no longer satisfied.</p><div class="scenario-chain scenario-detail-chain">Mission assignment → bounded capability lease → contextual exercise → expiration</div></div></div></section><section class="section scenario-detail" id="capability-scenario-03"><div><div class="section-label">05.03 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 03 / DEVICE CHANGE</span><h2>Capability can narrow without identity change</h2><p class="scenario-detail-copy">Alice's identity remains valid, but her device falls out of an approved posture. The effective capability available to her CRU can move from full execution to restricted execution, read-only access, or no exercise. ZTA can use the changed capability state as an input to the access decision.</p><div class="scenario-chain scenario-detail-chain">Device signal → governed condition change → effective capability restriction → ZTA decision</div></div></div></section><section class="section scenario-detail" id="capability-scenario-04"><div><div class="section-label">05.04 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 04 / MISSION CHANGE</span><h2>Context can alter what the CRU may exercise</h2><p class="scenario-detail-copy">Alice's organization and identity are unchanged, but the mission changes. A capability appropriate for one mission may be restricted, replaced, or newly enabled for another. The CRU therefore carries an evolving governed capability state rather than a permanent list of permissions.</p><div class="scenario-chain scenario-detail-chain">Mission transition → governance evaluation → capability update → bounded execution</div></div></div></section><section class="section scenario-detail" id="capability-scenario-05"><div><div class="section-label">05.05 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 05 / DISCONNECTED</span><h2>Previously governed capability can survive connectivity loss</h2><p class="scenario-detail-copy">Communications become intermittent or unavailable. A CRU can retain verifiable state, provenance, and bounded capability conditions locally, allowing authorized execution within predetermined limits. When connectivity returns, subsequent governance state can be reconciled.</p><div class="scenario-chain scenario-detail-chain">Disconnect → local verification → bounded capability exercise → reconciliation</div></div></div></section><section class="section scenario-detail" id="capability-scenario-06"><div><div class="section-label">05.06 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 06 / RISK EVENT</span><h2>An event can trigger immediate restriction</h2><p class="scenario-detail-copy">A risk signal, qualification failure, operational condition, or other governed trigger occurs. The CRU's effective state can transition before the next ordinary access request. Existing capabilities may be suspended, narrowed, or restricted.</p><div class="scenario-chain scenario-detail-chain">Trigger event → state transition → capability restriction → enforcement</div></div></div></section><section class="section scenario-detail" id="capability-scenario-07"><div><div class="section-label">05.07 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 07 / REVOCATION</span><h2>Capability termination becomes a governed event</h2><p class="scenario-detail-copy">A qualification expires, an assignment ends, a role is suspended, or an authority is revoked. The capability or lease is invalidated through a traceable state transition. The CRU preserves the provenance of why the capability ended and what state replaced it.</p><div class="scenario-chain scenario-detail-chain">Expiration or revocation → state transition → capability invalidation → provenance</div></div></div></section><section class="section scenario-detail" id="capability-scenario-08"><div><div class="section-label">05.08 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 08 / COALITION</span><h2>Governed capability can travel across boundaries</h2><p class="scenario-detail-copy">Alice operates across organizational or mission boundaries. Her CRU can represent portable, verifiable governance state and capability semantics while the receiving environment retains local authority to determine whether and how the capability may be exercised. Portability does not mean automatic trust.</p><div class="scenario-chain scenario-detail-chain">Federated governance → portable capability semantics → local evaluation → local enforcement</div></div></div></section><section class="section scenario-detail" id="capability-scenario-09"><div><div class="section-label">05.09 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 09 / EVE</span><h2>Possessing identity data does not create capability</h2><p class="scenario-detail-copy">Eve presents credentials or other identifying information associated with Alice, but the request does not satisfy the governed conditions for Alice's capability. The receiving environment can evaluate the requesting CRU, device state, capability provenance, mission context, and current policy before allowing execution. A mismatched or unverifiable context results in denial or restriction rather than an automatic transfer of Alice's capability.</p><div class="scenario-chain scenario-detail-chain">Untrusted request → identity/context evaluation → capability provenance check → deny or restrict</div></div></div></section>
+</section><section class="section scenario-detail" id="capability-scenario-01"><div><div class="section-label">09.01 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 01 / ROLE CHANGE</span><h2>Promotion changes governed capability</h2><p class="scenario-detail-copy">Alice moves from Engineer to Senior Engineer. The event changes the Person CRU's governed state. Capabilities such as approval, supervision, or access to higher-sensitivity resources can be derived from the new state instead of being manually added as unrelated permissions in each system.</p><div class="scenario-chain scenario-detail-chain">Role change → CRU state transition → capability derivation → current-request evaluation</div></div></div></section><section class="section scenario-detail" id="capability-scenario-02"><div><div class="section-label">09.02 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 02 / TEMPORARY MISSION</span><h2>A capability can be leased</h2><p class="scenario-detail-copy">Alice receives a mission-specific capability valid only for the assignment, resource scope, geography, and time window defined by governance. Her underlying identity and permanent role remain unchanged. The capability expires automatically when its lease conditions are no longer satisfied.</p><div class="scenario-chain scenario-detail-chain">Mission assignment → bounded capability lease → contextual exercise → expiration</div></div></div></section><section class="section scenario-detail" id="capability-scenario-03"><div><div class="section-label">09.03 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 03 / DEVICE CHANGE</span><h2>Capability can narrow without identity change</h2><p class="scenario-detail-copy">Alice's identity remains valid, but her device falls out of an approved posture. The effective capability available to her CRU can move from full execution to restricted execution, read-only access, or no exercise. ZTA can use the changed capability state as an input to the access decision.</p><div class="scenario-chain scenario-detail-chain">Device signal → governed condition change → effective capability restriction → ZTA decision</div></div></div></section><section class="section scenario-detail" id="capability-scenario-04"><div><div class="section-label">09.04 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 04 / MISSION CHANGE</span><h2>Context can alter what the CRU may exercise</h2><p class="scenario-detail-copy">Alice's organization and identity are unchanged, but the mission changes. A capability appropriate for one mission may be restricted, replaced, or newly enabled for another. The CRU therefore carries an evolving governed capability state rather than a permanent list of permissions.</p><div class="scenario-chain scenario-detail-chain">Mission transition → governance evaluation → capability update → bounded execution</div></div></div></section><section class="section scenario-detail" id="capability-scenario-05"><div><div class="section-label">09.05 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 05 / DISCONNECTED</span><h2>Previously governed capability can survive connectivity loss</h2><p class="scenario-detail-copy">Communications become intermittent or unavailable. A CRU can retain verifiable state, provenance, and bounded capability conditions locally, allowing authorized execution within predetermined limits. When connectivity returns, subsequent governance state can be reconciled.</p><div class="scenario-chain scenario-detail-chain">Disconnect → local verification → bounded capability exercise → reconciliation</div></div></div></section><section class="section scenario-detail" id="capability-scenario-06"><div><div class="section-label">09.06 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 06 / RISK EVENT</span><h2>An event can trigger immediate restriction</h2><p class="scenario-detail-copy">A risk signal, qualification failure, operational condition, or other governed trigger occurs. The CRU's effective state can transition before the next ordinary access request. Existing capabilities may be suspended, narrowed, or restricted.</p><div class="scenario-chain scenario-detail-chain">Trigger event → state transition → capability restriction → enforcement</div></div></div></section><section class="section scenario-detail" id="capability-scenario-07"><div><div class="section-label">09.07 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 07 / REVOCATION</span><h2>Capability termination becomes a governed event</h2><p class="scenario-detail-copy">A qualification expires, an assignment ends, a role is suspended, or an authority is revoked. The capability or lease is invalidated through a traceable state transition. The CRU preserves the provenance of why the capability ended and what state replaced it.</p><div class="scenario-chain scenario-detail-chain">Expiration or revocation → state transition → capability invalidation → provenance</div></div></div></section><section class="section scenario-detail" id="capability-scenario-08"><div><div class="section-label">09.08 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 08 / COALITION</span><h2>Governed capability can travel across boundaries</h2><p class="scenario-detail-copy">Alice operates across organizational or mission boundaries. Her CRU can represent portable, verifiable governance state and capability semantics while the receiving environment retains local authority to determine whether and how the capability may be exercised. Portability does not mean automatic trust.</p><div class="scenario-chain scenario-detail-chain">Federated governance → portable capability semantics → local evaluation → local enforcement</div></div></div></section><section class="section scenario-detail" id="capability-scenario-09"><div><div class="section-label">09.09 / CAPABILITY IN CONTEXT</div><div><span class="scenario-kicker">SCENARIO 09 / EVE</span><h2>Possessing identity data does not create capability</h2><p class="scenario-detail-copy">Eve presents credentials or other identifying information associated with Alice, but the request does not satisfy the governed conditions for Alice's capability. The receiving environment can evaluate the requesting CRU, device state, capability provenance, mission context, and current policy before allowing execution. A mismatched or unverifiable context results in denial or restriction rather than an automatic transfer of Alice's capability.</p><div class="scenario-chain scenario-detail-chain">Untrusted request → identity/context evaluation → capability provenance check → deny or restrict</div></div></div></section>
 <section class="section promotion" id="alice-promotion">
-<div class="section-label">06 / STATE TRANSITION</div>
+<div class="section-label">10 / STATE TRANSITION</div>
 <div>
 <h2>When Alice gets promoted.</h2>
 <p class="promotion-lead">
@@ -262,7 +313,7 @@ Execution</pre>
 </div>
 </div>
 </section><section class="section" id="risk-events">
-<div class="section-label">07 / RISK EVENTS</div>
+<div class="section-label">11 / RISK EVENTS</div>
 <div>
 <h2>Risk events can change the governed situation.</h2>
 <p>A risk event is a governed signal or condition that may require the CRU to change state, narrow a capability, suspend an operation, or require renewed verification. The event is distinct from the authorization decision: it changes the conditions under which subsequent decisions are made.</p>
@@ -290,67 +341,13 @@ PEP enforcement → Execution</div>
           </div>
 </div>
 </div>
-</section><section class="section scenario-detail risk-detail" id="risk-scenario-01"><div><div class="section-label">07.01 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 01 / DEVICE</span><h2>Device compromise signal</h2><p class="scenario-detail-copy">A device begins reporting a posture inconsistent with policy. The event can cause the associated CRU's effective capability state to move from normal execution to restricted or suspended operation.</p><div class="scenario-chain scenario-detail-chain">Posture signal → risk event → capability restriction → next request evaluated in new state</div></div></div></section><section class="section scenario-detail risk-detail" id="risk-scenario-02"><div><div class="section-label">07.02 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 02 / MISSION</span><h2>Mission conditions change</h2><p class="scenario-detail-copy">A mission changes phase, objective, location, or operating conditions. A capability that was appropriate for the prior context may become unavailable, narrowed, or replaced without changing the underlying identity.</p><div class="scenario-chain scenario-detail-chain">Mission event → governed condition change → capability re-evaluation → bounded execution</div></div></div></section><section class="section scenario-detail risk-detail" id="risk-scenario-03"><div><div class="section-label">07.03 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 03 / QUALIFICATION</span><h2>Qualification expires</h2><p class="scenario-detail-copy">A certification, training qualification, or other prerequisite reaches its expiration condition. The event can invalidate a dependent capability through a traceable governance transition rather than relying on every downstream application to discover the change independently.</p><div class="scenario-chain scenario-detail-chain">Expiration → prerequisite invalidation → capability state change → enforcement</div></div></div></section><section class="section scenario-detail risk-detail" id="risk-scenario-04"><div><div class="section-label">07.04 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 04 / THREAT</span><h2>Threat intelligence changes risk</h2><p class="scenario-detail-copy">A verified threat indicator or operational warning changes the risk context. Governance may require a capability to be narrowed, require additional conditions, or suspend exercise until the event is resolved.</p><div class="scenario-chain scenario-detail-chain">Threat signal → validated event → governed restriction → ZTA evaluates current context</div></div></div></section><section class="section scenario-detail risk-detail" id="risk-scenario-05"><div><div class="section-label">07.05 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 05 / AUTHORITY</span><h2>Authority is revoked</h2><p class="scenario-detail-copy">An authorized governance action removes or suspends an authority. The revocation becomes part of the CRU's state and provenance, allowing relying systems to recognize the changed condition without treating the old capability as permanently valid.</p><div class="scenario-chain scenario-detail-chain">Revocation event → state transition → capability invalidation → provenance</div></div></div></section><section class="section scenario-detail risk-detail" id="risk-scenario-06"><div><div class="section-label">07.06 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 06 / RECOVERY</span><h2>Risk condition is cleared</h2><p class="scenario-detail-copy">A previously restricted condition is resolved and validated. Governance can transition the CRU toward an appropriate state, but recovery does not automatically imply unrestricted access; current ZTA conditions still apply when a capability is exercised.</p><div class="scenario-chain scenario-detail-chain">Recovery signal → validation → state restoration → current-request evaluation</div></div></div></section>
-
+</section><section class="section scenario-detail risk-detail" id="risk-scenario-01"><div><div class="section-label">11.01 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 01 / DEVICE</span><h2>Device compromise signal</h2><p class="scenario-detail-copy">A device begins reporting a posture inconsistent with policy. The event can cause the associated CRU's effective capability state to move from normal execution to restricted or suspended operation.</p><div class="scenario-chain scenario-detail-chain">Posture signal → risk event → capability restriction → next request evaluated in new state</div></div></div></section><section class="section scenario-detail risk-detail" id="risk-scenario-02"><div><div class="section-label">11.02 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 02 / MISSION</span><h2>Mission conditions change</h2><p class="scenario-detail-copy">A mission changes phase, objective, location, or operating conditions. A capability that was appropriate for the prior context may become unavailable, narrowed, or replaced without changing the underlying identity.</p><div class="scenario-chain scenario-detail-chain">Mission event → governed condition change → capability re-evaluation → bounded execution</div></div></div></section><section class="section scenario-detail risk-detail" id="risk-scenario-03"><div><div class="section-label">11.03 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 03 / QUALIFICATION</span><h2>Qualification expires</h2><p class="scenario-detail-copy">A certification, training qualification, or other prerequisite reaches its expiration condition. The event can invalidate a dependent capability through a traceable governance transition rather than relying on every downstream application to discover the change independently.</p><div class="scenario-chain scenario-detail-chain">Expiration → prerequisite invalidation → capability state change → enforcement</div></div></div></section><section class="section scenario-detail risk-detail" id="risk-scenario-04"><div><div class="section-label">11.04 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 04 / THREAT</span><h2>Threat intelligence changes risk</h2><p class="scenario-detail-copy">A verified threat indicator or operational warning changes the risk context. Governance may require a capability to be narrowed, require additional conditions, or suspend exercise until the event is resolved.</p><div class="scenario-chain scenario-detail-chain">Threat signal → validated event → governed restriction → ZTA evaluates current context</div></div></div></section><section class="section scenario-detail risk-detail" id="risk-scenario-05"><div><div class="section-label">11.05 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 05 / AUTHORITY</span><h2>Authority is revoked</h2><p class="scenario-detail-copy">An authorized governance action removes or suspends an authority. The revocation becomes part of the CRU's state and provenance, allowing relying systems to recognize the changed condition without treating the old capability as permanently valid.</p><div class="scenario-chain scenario-detail-chain">Revocation event → state transition → capability invalidation → provenance</div></div></div></section><section class="section scenario-detail risk-detail" id="risk-scenario-06"><div><div class="section-label">11.06 / RISK EVENT</div><div><span class="scenario-kicker">EVENT 06 / RECOVERY</span><h2>Risk condition is cleared</h2><p class="scenario-detail-copy">A previously restricted condition is resolved and validated. Governance can transition the CRU toward an appropriate state, but recovery does not automatically imply unrestricted access; current ZTA conditions still apply when a capability is exercised.</p><div class="scenario-chain scenario-detail-chain">Recovery signal → validation → state restoration → current-request evaluation</div></div></div></section>
 <section class="section" id="cru-lifecycle">
-<div class="section-label">08 / CRU LIFECYCLE</div>
+<div class="section-label">12 / CRU LIFECYCLE</div>
 <div>
 <h2>A Living Computational Unit</h2>
 <p>A CRU is not merely a static record. Its identity, capabilities, state, provenance, and governance can persist while its operational condition evolves.</p>
 <div class="cru-lifecycle-flow"><span>Create</span><b>→</b><span>Bind</span><b>→</b><span>Govern</span><b>→</b><span>Execute</span><b>→</b><span>Evolve</span><b>→</b><span>Revoke</span><b>→</b><span>Archive</span></div>
-</div>
-</section>
-<section class="section" id="cru-governance-boundary">
-<div class="section-label">09 / GOVERNANCE BOUNDARY</div>
-<div class="content">
-<h2>The CRU as a Governance Boundary</h2>
-<p>The CRU can itself become the boundary at which identity, authorization, capability, state, execution, governance, and provenance are defined and enforced.</p>
-<div class="native-list-grid">
-<div>Identity</div><div>Authorization</div><div>Capability</div><div>State</div>
-<div>Execution</div><div>Governance</div><div>Provenance</div>
-</div>
-</div>
-</section>
-<section class="section" id="cru-vs-existing">
-<div class="section-label">10 / EXISTING APPROACHES</div>
-<div class="content">
-<h2>CRU and Existing Security Models</h2>
-<p>CRU does not replace established security mechanisms. It provides a common computational unit in which identity, capability, state, execution, provenance, and governance can be connected.</p>
-<table class="native-compare">
-<thead><tr><th>Approach</th><th>Primary Unit</th><th>Primary Function</th></tr></thead>
-<tbody>
-<tr><td>IAM</td><td>Identity</td><td>Establishes who the subject is</td></tr>
-<tr><td>RBAC / ABAC</td><td>Role / attributes</td><td>Determines permitted access</td></tr>
-<tr><td>Zero Trust</td><td>Access decision</td><td>Evaluates access in context</td></tr>
-<tr><td>Micro-segmentation</td><td>Network / workload</td><td>Constrains communication paths</td></tr>
-<tr><td>CRU</td><td>Canonical computational unit</td><td>Connects identity, capability, state, execution, governance, provenance</td></tr>
-</tbody></table>
-</div>
-</section>
-<section class="section" id="cru-portable-persistence">
-<div class="section-label">11 / PORTABLE PERSISTENCE</div>
-<div class="content">
-<h2>Identity Without Repository Dependence</h2>
-<p>Portable persistence separates the canonical representation from the repository that happens to hold it.</p>
-<div class="native-persistence">
-<div><strong>CRU</strong><p>Canonical identity<br/>Integrity<br/>Provenance<br/>Meaning</p></div>
-<div><p>Cloud   ·   Edge   ·   Device   ·   Gateway</p></div>
-</div>
-<p><strong>The CRU can move across infrastructures without surrendering its canonical identity.</strong></p>
-</div>
-</section>
-<section class="section" id="identity-to-capability">
-<div class="section-label">12 / IDENTITY TO CAPABILITY</div>
-<div class="content">
-<h2>From Identity to Capability</h2>
-<ol class="native-sequence">
-<li><strong>Identity</strong><span>Alice is Alice.</span></li>
-<li><strong>Authorization</strong><span>Alice is authorized.</span></li>
-<li><strong>Capability</strong><span>Alice can perform X.</span></li>
-<li><strong>Context</strong><span>Alice can perform X under condition Y.</span></li>
-<li><strong>Governance</strong><span>Policy Z permits X under Y.</span></li>
-<li><strong>Execution</strong><span>The capability is enforced where the action occurs.</span></li>
-</ol>
 </div>
 </section>
 <section class="section" id="research-prototype-deployment">
@@ -429,7 +426,7 @@ PEP enforcement → Execution</div>
       </p>
 </section>
 <section class="contact" id="contact">
-<div class="section-label">19 / CONTACT</div>
+<div class="section-label">18 / CONTACT</div>
 <h2>Build the foundation.</h2>
 <a class="contact-link" href="mailto:contact@dench-labs.com">contact@dench-labs.com <span>↗</span></a>
 </section>
