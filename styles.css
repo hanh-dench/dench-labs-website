@@ -217,10 +217,36 @@ footer {
 }
 
 @media (max-width: 700px) {
-  .site-header { padding: 15px 20px; gap: 18px; }
-  .brand { flex: 0 0 auto; }
-  nav { gap: 16px; max-width: 68vw; }
-  nav a { font-size: 10px; white-space: nowrap; }
+  html { scroll-padding-top: 118px; }
+  .site-header {
+    padding: 13px 20px 11px;
+    display: block;
+    max-width: none;
+    width: 100%;
+  }
+  .brand {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+  nav {
+    width: 100%;
+    max-width: none;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2px 0 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  nav a {
+    flex: 0 0 auto;
+    font-size: 9px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
   .hero { min-height: 70vh; padding: 12vh 20px 10vh; }
   .hero h1 { font-size: clamp(44px, 15vw, 72px); }
   .hero-copy { font-size: 16px; }
