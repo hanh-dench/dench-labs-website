@@ -10,7 +10,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 86px; }
 body {
   margin: 0;
   background: var(--bg);
@@ -33,12 +33,20 @@ body::before {
 
 .site-header, main, footer { position: relative; z-index: 1; }
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
   max-width: var(--max);
   margin: auto;
-  padding: 28px 28px;
+  padding: 18px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: rgba(245, 245, 241, .94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 .brand {
   color: var(--ink);
@@ -47,7 +55,8 @@ body::before {
   letter-spacing: .08em;
 }
 .brand span { color: var(--muted); }
-nav { display: flex; gap: 28px; }
+nav { display: flex; gap: 24px; align-items: center; overflow-x: auto; scrollbar-width: none; }
+nav::-webkit-scrollbar { display: none; }
 nav a {
   color: var(--muted);
   text-decoration: none;
@@ -208,9 +217,10 @@ footer {
 }
 
 @media (max-width: 700px) {
-  .site-header { padding: 22px 20px; }
-  nav { gap: 14px; }
-  nav a:nth-child(n+3) { display: none; }
+  .site-header { padding: 15px 20px; gap: 18px; }
+  .brand { flex: 0 0 auto; }
+  nav { gap: 16px; max-width: 68vw; }
+  nav a { font-size: 10px; white-space: nowrap; }
   .hero { min-height: 70vh; padding: 12vh 20px 10vh; }
   .hero h1 { font-size: clamp(44px, 15vw, 72px); }
   .hero-copy { font-size: 16px; }
@@ -956,14 +966,12 @@ footer {
 .promotion-flow{
   margin-top:50px;
   display:grid;
-  grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr);
+  grid-template-columns:1fr 34px 1fr 34px 1fr 34px 1fr;
   align-items:stretch;
   gap:0;
 }
 .promotion-step{
   min-width:0;
-  width:100%;
-  box-sizing:border-box;
   padding:25px;
   border:1px solid var(--line);
   background:var(--bg);
@@ -995,10 +1003,6 @@ footer {
   gap:7px;
 }
 .state-tags span{
-  max-width:100%;
-  overflow-wrap:anywhere;
-  word-break:break-word;
-  box-sizing:border-box;
   padding:7px 9px;
   border:1px solid var(--line);
   background:var(--panel);
@@ -1012,7 +1016,7 @@ footer {
   background:var(--panel);
 }
 .promotion-zta .flow-label{margin-bottom:16px}
-.promotion-zta .flow{font-size:12px;line-height:1.8;overflow-wrap:anywhere;word-break:break-word}
+.promotion-zta .flow{font-size:12px;line-height:1.8}
 .promotion-zta p{margin:18px 0 0;font-size:14px !important}
 .promotion-grid{
   margin-top:35px;
@@ -1063,16 +1067,16 @@ footer {
 }
 @media (max-width:950px){
   .promotion-flow{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:16px;
+    grid-template-columns:1fr;
+    gap:0;
   }
   .promotion-arrow{
-    display:none;
+    min-height:34px;
+    transform:rotate(90deg);
   }
   .promotion-grid{grid-template-columns:1fr}
 }
 @media (max-width:700px){
-  .promotion-flow{grid-template-columns:1fr;gap:12px}
   .comparison-principle{display:block}
   .comparison-principle strong{display:block;margin-bottom:6px;font-size:18px}
   .flow{overflow-wrap:anywhere}
@@ -1086,4 +1090,58 @@ footer {
   .context-grid article{min-height:0}
   .context-flow{font-size:10px;padding:16px;line-height:1.7}
   #capability-scenarios blockquote{font-size:16px;padding:20px}
+}
+
+
+/* Operational scenarios */
+.scenario-section{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(31,41,55,.14)}
+.scenario-heading>span{display:block;font-size:.72rem;letter-spacing:.14em;font-weight:700;opacity:.68;margin-bottom:.55rem}
+.scenario-heading h3{font-size:1.45rem;margin:.1rem 0 .7rem}
+.scenario-heading p{max-width:780px}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.6rem}
+.scenario-grid article{padding:1.25rem;border:1px solid rgba(31,41,55,.14);border-radius:12px;background:rgba(255,255,255,.45)}
+.scenario-grid article>span{font-size:.68rem;letter-spacing:.12em;font-weight:700;opacity:.62}
+.scenario-grid h3{margin:.5rem 0 .55rem;font-size:1.08rem}
+.scenario-grid p{margin:0 0 1rem;font-size:.93rem;line-height:1.65}
+.scenario-chain{font-size:.78rem;line-height:1.5;font-weight:600;padding-top:.8rem;border-top:1px solid rgba(31,41,55,.11)}
+.scenario-principle{margin-top:1.4rem;padding:1.2rem 1.3rem;border-left:3px solid currentColor;background:rgba(31,41,55,.045);line-height:1.65}
+@media (max-width:900px){.scenario-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.scenario-section{margin-top:2.5rem;padding-top:2rem}.scenario-grid{grid-template-columns:1fr;gap:.8rem}.scenario-grid article{padding:1rem}.scenario-heading h3{font-size:1.25rem}.scenario-grid p{font-size:.9rem}.scenario-principle{padding:1rem;font-size:.9rem}}
+
+/* Expanded scenario sections */
+.scenario-detail{display:block;padding-top:3.5rem;padding-bottom:3.5rem}
+.scenario-detail>div{display:grid;grid-template-columns:180px minmax(0,1fr);gap:35px;align-items:start;width:100%}
+.scenario-detail .section-label{padding-top:.35rem}
+.scenario-kicker{display:inline-block;font-size:.7rem;letter-spacing:.14em;font-weight:800;opacity:.62;margin-bottom:.7rem}
+.scenario-detail h2{margin:0 0 .9rem;font-size:clamp(1.65rem,3vw,2.35rem);line-height:1.12}
+.scenario-detail-copy{max-width:850px;font-size:1.03rem;line-height:1.75;margin:0 0 1.3rem}
+.scenario-detail-chain{max-width:850px;margin-top:.8rem;padding:1rem 1.15rem;border:1px solid rgba(31,41,55,.14);border-radius:10px;background:rgba(31,41,55,.045);font-weight:650;line-height:1.55}
+.risk-detail{border-top:1px solid rgba(31,41,55,.12)}
+@media (max-width:800px){.scenario-detail>div{grid-template-columns:1fr;gap:.8rem}.scenario-detail{padding-top:2.5rem;padding-bottom:2.5rem}.scenario-detail .section-label{padding-top:0}.scenario-detail-copy{font-size:.96rem}}
+
+/* Scenario sections use their own full-width internal grid. */
+.scenario-detail{display:block}
+.scenario-detail > div{
+  display:grid;
+  grid-template-columns:180px minmax(0,1fr);
+  gap:35px;
+  width:100%;
+  align-items:start;
+}
+.scenario-detail .section-label{
+  align-self:start;
+  padding-top:2px;
+  margin:0;
+}
+.scenario-detail > div > div:last-child{min-width:0}
+.scenario-detail h2,.scenario-detail-copy,.scenario-detail-chain{max-width:850px}
+
+
+
+/* Scenario mobile layout */
+@media (max-width:800px){
+  .scenario-detail{padding-top:2.5rem;padding-bottom:2.5rem}
+  .scenario-detail > div{grid-template-columns:1fr;gap:12px}
+  .scenario-detail .section-label{padding-top:0}
+  .scenario-detail-copy{font-size:.96rem}
 }
