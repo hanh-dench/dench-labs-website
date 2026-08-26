@@ -217,35 +217,23 @@ footer {
 }
 
 @media (max-width: 700px) {
-  html { scroll-padding-top: 118px; }
+  html { scroll-padding-top: 64px; }
   .site-header {
-    padding: 13px 20px 11px;
+    position: sticky;
+    top: 0;
+    padding: 13px 20px;
     display: block;
     max-width: none;
     width: 100%;
   }
   .brand {
     display: block;
-    margin-bottom: 12px;
+    margin: 0;
     font-size: 12px;
   }
-  nav {
-    width: 100%;
-    max-width: none;
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 2px 0 4px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  nav a {
-    flex: 0 0 auto;
-    font-size: 9px;
-    line-height: 1.2;
-    white-space: nowrap;
+  /* Mobile intentionally shows only the Dench Labs LLC brand. */
+  .site-header nav {
+    display: none !important;
   }
   .hero { min-height: 70vh; padding: 12vh 20px 10vh; }
   .hero h1 { font-size: clamp(44px, 15vw, 72px); }
@@ -1202,4 +1190,11 @@ footer {
   .scenario-detail-copy{
     font-size:.96rem;
   }
+}
+
+
+/* Final mobile navigation rule: brand-only header for small screens. */
+@media screen and (max-width:700px){
+  .site-header nav{display:none !important;}
+  .site-header{position:sticky;top:0;z-index:1000;}
 }
