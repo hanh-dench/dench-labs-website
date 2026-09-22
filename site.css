@@ -12,3 +12,9 @@ nav a{display:flex;align-items:center}
 
 .dark .flow .node{background:var(--ink);color:var(--bg);border-color:var(--bg)}
 .dark .flow .arrow{color:var(--bg)}
+
+/* Governance section 12: long local-enforcement flow */
+.local-enforcement-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;overflow:visible}
+.local-enforcement-flow .node{min-width:0;overflow-wrap:anywhere}
+.local-enforcement-flow .arrow{display:none}
+@media(max-width:900px){.local-enforcement-flow{display:flex;flex-direction:column;gap:0}.local-enforcement-flow .arrow{display:flex}}
