@@ -18,3 +18,36 @@ nav a{display:flex;align-items:center}
 .local-enforcement-flow .node{min-width:0;overflow-wrap:anywhere}
 .local-enforcement-flow .arrow{display:none}
 @media(max-width:900px){.local-enforcement-flow{display:flex;flex-direction:column;gap:0}.local-enforcement-flow .arrow{display:flex}}
+
+
+/* Governance Section 12 correction */
+@media (min-width:901px){
+  .section12-flow{
+    display:grid;
+    grid-template-columns:
+      minmax(100px,1fr) auto
+      minmax(88px,.9fr) auto
+      minmax(105px,1fr) auto
+      minmax(105px,1fr) auto
+      minmax(135px,1.25fr) auto
+      minmax(115px,1.05fr) auto
+      minmax(105px,1fr);
+    align-items:stretch;
+    overflow:visible;
+    width:100%;
+  }
+  .section12-flow .node{
+    min-width:0;
+    padding:14px 8px;
+    font-size:13px;
+    line-height:1.25;
+    overflow-wrap:break-word;
+  }
+  .section12-flow .arrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 4px;
+    font-size:19px;
+  }
+}
